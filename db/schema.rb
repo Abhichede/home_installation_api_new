@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_182713) do
+ActiveRecord::Schema.define(version: 2021_11_01_193706) do
+
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "city_name"
+    t.integer "zipcode"
+    t.integer "country_code"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "country_name"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
@@ -19,6 +35,13 @@ ActiveRecord::Schema.define(version: 2021_11_01_182713) do
     t.string "password"
     t.string "phone_number"
     t.string "role"
+    t.boolean "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "zipcodes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "zipcode"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

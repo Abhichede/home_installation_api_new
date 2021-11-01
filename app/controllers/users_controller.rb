@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     res = {}
     if check_login[0].present?
       res['message'] = "Login Successfully"
-      res['status'] = "Success"
+      res['status'] = true
       res['data'] = check_login
     else
       res['message'] = "Please enter correct credentials"
-      res['status'] = "Fail"
+      res['status'] = false
     end
     render json:res
   end
@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
       render json: @user, status: :created, location: @user
     else
