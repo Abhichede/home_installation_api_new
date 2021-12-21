@@ -1,0 +1,2 @@
+class RefralResource < ApplicationRecord
+end

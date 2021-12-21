@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization_name: MyString
+  enable_completion_to_publish: MyString
+  enable_cost_estimator: MyString
+  user_id: 1
+
+two:
+  organization_name: MyString
+  enable_completion_to_publish: MyString
+  enable_cost_estimator: MyString
+  user_id: 1

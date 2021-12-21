@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  type: 
+  amount_percentage: MyString
+  discription: MyString
+  notes: MyString
+  description: MyString
+  applied_to_service: MyString
+  applied_to_add_ons: MyString
+  max_uses: MyString
+  expiration_dates: MyString
+  user_id: 1
+
+two:
+  code: MyString
+  type: 
+  amount_percentage: MyString
+  discription: MyString
+  notes: MyString
+  description: MyString
+  applied_to_service: MyString
+  applied_to_add_ons: MyString
+  max_uses: MyString
+  expiration_dates: MyString
+  user_id: 1

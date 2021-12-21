@@ -1,0 +1,2 @@
+class TopAgent < ApplicationRecord
+end

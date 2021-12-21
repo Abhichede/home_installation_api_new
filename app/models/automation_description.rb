@@ -1,0 +1,2 @@
+class AutomationDescription < ApplicationRecord
+end

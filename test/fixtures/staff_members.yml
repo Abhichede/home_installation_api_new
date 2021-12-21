@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enable_schedule_new_inspection: MyString
+  enable_publish_report: MyString
+  enable_new_comment_to_template: MyString
+  enable_edit_template: MyString
+  enable_manage_template: MyString
+  enable_access_financial_data: MyString
+  enable_comapany_data: MyString
+  user_id: 1
+
+two:
+  enable_schedule_new_inspection: MyString
+  enable_publish_report: MyString
+  enable_new_comment_to_template: MyString
+  enable_edit_template: MyString
+  enable_manage_template: MyString
+  enable_access_financial_data: MyString
+  enable_comapany_data: MyString
+  user_id: 1

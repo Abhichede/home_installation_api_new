@@ -1,0 +1,2 @@
+class AutomationHeading < ApplicationRecord
+end

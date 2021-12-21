@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  base_cost: MyString
+  duration: MyString
+  templates_id: MyString
+  agreement_id: MyString
+  user_id: 1
+
+two:
+  name: MyString
+  description: MyString
+  base_cost: MyString
+  duration: MyString
+  templates_id: MyString
+  agreement_id: MyString
+  user_id: 1
