@@ -10,8 +10,13 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1
   def show
-    render json: @organization
+    user_id = params['user_id']
+    res = {}
+    res['status'] = true
+    res['data'] = Organization.where("user_id=#{user_id}")
+    render json: res
   end
+
 
   # POST /organizations
   def create

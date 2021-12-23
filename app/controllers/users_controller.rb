@@ -28,6 +28,18 @@ class UsersController < ApplicationController
   def show
     render json: @user
   end
+  def check_existing_user
+    email_id = params['email_id']
+    user = User.where("email='#{email_id}'")
+    res = {}
+    res['status'] = true
+    if user.present?
+      res['email_present'] = true
+    else
+      res['email_present'] = false
+    end
+    render json: res
+  end
 
   # POST /users
   def create

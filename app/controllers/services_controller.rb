@@ -10,7 +10,11 @@ class ServicesController < ApplicationController
 
   # GET /services/1
   def show
-    render json: @service
+    user_id = params['user_id']
+    res = {}
+    res['status'] = true
+    res['data'] = Service.where("user_id=#{user_id}")
+    render json: res
   end
 
   # POST /services

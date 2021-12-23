@@ -9,8 +9,12 @@ class StaffMembersController < ApplicationController
   end
 
   # GET /staff_members/1
-  def show
-    render json: @staff_member
+   def show
+    user_id = params['user_id']
+    res = {}
+    res['status'] = true
+    res['data'] = StaffMember.where("user_id=#{user_id}")
+    render json: res
   end
 
   # POST /staff_members
