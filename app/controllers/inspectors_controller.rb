@@ -3,39 +3,56 @@ class InspectorsController < ApplicationController
 
   # GET /inspectors
   def index
+    res = {}
     @inspectors = Inspector.all
-
-    render json: @inspectors
+    res['status'] = 200
+    res['data'] = @inspectors
+    render json: res
   end
 
   # GET /inspectors/1
   def show
-    render json: @inspector
+    res = {}
+    res['status'] = 200
+    res['data'] = @inspector
+    render json: res
   end
 
   # POST /inspectors
   def create
+    res = {}
     @inspector = Inspector.new(inspector_params)
 
     if @inspector.save
-      render json: @inspector, status: :created, location: @inspector
+      res['status'] = 200
+      res['data'] = @inspector
     else
-      render json: @inspector.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['data'] = @inspector.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /inspectors/1
   def update
+    res = {}
     if @inspector.update(inspector_params)
-      render json: @inspector
+      res['status'] = 200
+      res['data'] = @inspector
     else
-      render json: @inspector.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['data'] = @inspector.errors
     end
+    render json: res
   end
 
   # DELETE /inspectors/1
   def destroy
-    @inspector.destroy
+    res = {}
+    res['status'] = 200
+      res['data'] = @inspector.destroy
+
+    render json: res
   end
 
   private

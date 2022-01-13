@@ -3,43 +3,61 @@ class TopAgentsController < ApplicationController
 
   # GET /top_agents
   def index
+    res = {}
     @top_agents = TopAgent.all
 
-    render json: @top_agents
+    res['status'] = 200
+    res['data'] = @top_agents
+    render json: res
   end
 
   # GET /top_agents/1
   def show
+    res = {}
     user_id = params['user_id']
     res = {}
     res['status'] = true
     res['data'] = TopAgent.where("user_id=#{user_id}")
+
     render json: res
   end
 
   # POST /top_agents
   def create
+    res = {}
     @top_agent = TopAgent.new(top_agent_params)
 
     if @top_agent.save
-      render json: @top_agent, status: :created, location: @top_agent
+      res['status'] = 200
+    res['data'] = @top_agent
+
     else
-      render json: @top_agent.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @top_agent.errors
+
     end
+    render json: res
   end
 
   # PATCH/PUT /top_agents/1
   def update
+    res = {}
     if @top_agent.update(top_agent_params)
-      render json: @top_agent
+      res['status'] = 200
+    res['data'] = @top_agent
     else
-      render json: @top_agent.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @top_agent.errors
     end
+    render json: res
   end
 
   # DELETE /top_agents/1
   def destroy
-    @top_agent.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @top_agent.destroy
+    render json: res
   end
 
   private

@@ -3,39 +3,56 @@ class AgreementsController < ApplicationController
 
   # GET /agreements
   def index
+    res = {}
     @agreements = Agreement.all
-
-    render json: @agreements
+    res['status'] = 200
+    res['data'] = @agreements
+    render json: res
   end
 
   # GET /agreements/1
   def show
-    render json: @agreement
+    res = {}
+    res['status'] = 200
+    res['data'] = @agreement
+    render json: res
   end
 
   # POST /agreements
   def create
+    res = {}
     @agreement = Agreement.new(agreement_params)
 
     if @agreement.save
-      render json: @agreement, status: :created, location: @agreement
+      res['status'] = 200
+    res['data'] = @agreement
     else
+      res['status'] = 201
+    res['data'] = @agreement.errors
       render json: @agreement.errors, status: :unprocessable_entity
     end
+    render json: res
   end
 
   # PATCH/PUT /agreements/1
   def update
+    res = {}
     if @agreement.update(agreement_params)
-      render json: @agreement
+      res['status'] = 200
+      res['data'] = @agreement
     else
-      render json: @agreement.errors, status: :unprocessable_entity
+      res['status'] = 200
+    res['data'] = @agreement.errors
     end
+    render json: res
   end
 
   # DELETE /agreements/1
   def destroy
-    @agreement.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @agreement.destroy
+    render json: res
   end
 
   private

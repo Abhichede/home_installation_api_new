@@ -3,39 +3,56 @@ class AutomationHeadingsController < ApplicationController
 
   # GET /automation_headings
   def index
+    res = {}
     @automation_headings = AutomationHeading.all
-
-    render json: @automation_headings
+    res['status'] = 200
+    res['data'] = @automation_headings
+    render json: res
   end
 
   # GET /automation_headings/1
   def show
-    render json: @automation_heading
+    res = {}
+    res['status'] = 200
+    res['data'] = @automation_heading
+    render json: res
   end
 
   # POST /automation_headings
   def create
+    res = {}
     @automation_heading = AutomationHeading.new(automation_heading_params)
 
     if @automation_heading.save
-      render json: @automation_heading, status: :created, location: @automation_heading
+      res['status'] = 200
+    res['data'] = @automation_heading
+
     else
-      render json: @automation_heading.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @automation_heading.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /automation_headings/1
   def update
+    res = {}
     if @automation_heading.update(automation_heading_params)
-      render json: @automation_heading
+      res['status'] = 200
+    res['data'] = @automation_heading
     else
-      render json: @automation_heading.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @automation_heading.errors
     end
+    render json: res
   end
 
   # DELETE /automation_headings/1
   def destroy
-    @automation_heading.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @automation_heading.destroy
+    render json: res
   end
 
   private

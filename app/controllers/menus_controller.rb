@@ -3,39 +3,56 @@ class MenusController < ApplicationController
 
   # GET /menus
   def index
+    res = {}
     @menus = Menu.all
 
-    render json: @menus
+    res['status'] = 200
+    res['data'] = @menus
+    render json: res
   end
 
   # GET /menus/1
   def show
-    render json: @menu
+    res = {}
+    res['status'] = 200
+    res['data'] = @menu
+    render json: res
   end
 
   # POST /menus
   def create
+    res = {}
     @menu = Menu.new(menu_params)
 
     if @menu.save
-      render json: @menu, status: :created, location: @menu
+      res['status'] = 200
+    res['data'] = @menu
     else
-      render json: @menu.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @menu.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /menus/1
   def update
+    res = {}
     if @menu.update(menu_params)
-      render json: @menu
+      res['status'] = 200
+    res['data'] = @menu
     else
-      render json: @menu.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @menu.errors
     end
+    render json: res
   end
 
   # DELETE /menus/1
   def destroy
-    @menu.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @menu.destroy
+    render json: res
   end
 
   private

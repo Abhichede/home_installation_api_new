@@ -3,13 +3,16 @@ class AutomationSavesController < ApplicationController
 
   # GET /automation_saves
   def index
+    res = {}
     @automation_saves = AutomationSave.all
-
-    render json: @automation_saves
+    res['status'] = 200
+    res['data'] = @automation_saves
+    render json: res
   end
 
   # GET /automation_saves/1
    def show
+    res = {}
     user_id = params['user_id']
     res = {}
     res['status'] = true
@@ -20,27 +23,38 @@ class AutomationSavesController < ApplicationController
 
   # POST /automation_saves
   def create
+    res = {}
     @automation_safe = AutomationSave.new(automation_safe_params)
 
     if @automation_safe.save
-      render json: @automation_safe, status: :created, location: @automation_safe
+      res['status'] = 200
+      res['data'] = @automation_safe
     else
-      render json: @automation_safe.errors, status: :unprocessable_entity
+      res['status'] = 200
+      res['data'] = @automation_safe.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /automation_saves/1
   def update
+    res = {}
     if @automation_safe.update(automation_safe_params)
-      render json: @automation_safe
+      res['status'] = 200
+      res['data'] = @automation_safe
     else
-      render json: @automation_safe.errors, status: :unprocessable_entity
+      res['status'] = 200
+      res['data'] = @automation_safe.errors
     end
+    render json: res
   end
 
   # DELETE /automation_saves/1
   def destroy
-    @automation_safe.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @automation_safe.destroy
+    render json: res
   end
 
   private

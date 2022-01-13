@@ -3,39 +3,55 @@ class UserCardsController < ApplicationController
 
   # GET /user_cards
   def index
+    res = {}
     @user_cards = UserCard.all
-
-    render json: @user_cards
+    res['status'] = 200
+    res['data'] = @user_cards
+    render json: res
   end
 
   # GET /user_cards/1
   def show
-    render json: @user_card
+    res = {}
+    res['status'] = 200
+    res['data'] = @user_card
+    render json: res
   end
 
   # POST /user_cards
   def create
+    res = {}
     @user_card = UserCard.new(user_card_params)
 
     if @user_card.save
-      render json: @user_card, status: :created, location: @user_card
+      res['status'] = 200
+    res['data'] = @user_card
     else
-      render json: @user_card.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @user_card.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /user_cards/1
   def update
+    res = {}
     if @user_card.update(user_card_params)
-      render json: @user_card
+      res['status'] = 200
+    res['data'] = @user_card
     else
-      render json: @user_card.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @user_card.errors
     end
+    render json: res
   end
 
   # DELETE /user_cards/1
   def destroy
-    @user_card.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @user_card.destroy
+    render json: res
   end
 
   private

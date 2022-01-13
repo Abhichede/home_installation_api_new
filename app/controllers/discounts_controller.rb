@@ -3,39 +3,58 @@ class DiscountsController < ApplicationController
 
   # GET /discounts
   def index
+    res = {}
     @discounts = Discount.all
+    res['status'] = 200
+    res['data'] = @discounts
 
-    render json: @discounts
+    render json:  res[
   end
 
   # GET /discounts/1
   def show
-    render json: @discount
+    res = {}
+    res['status'] = 200
+    res['data'] = @discount
+
+    render json:  res
   end
 
   # POST /discounts
   def create
+    res = {}
     @discount = Discount.new(discount_params)
-
     if @discount.save
-      render json: @discount, status: :created, location: @discount
+      res['status'] = 200
+      res['data'] = @discount
+
     else
-      render json: @discount.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['errors'] = @discount.errors
     end
+     render json: res
   end
 
   # PATCH/PUT /discounts/1
   def update
+      res = {}
     if @discount.update(discount_params)
-      render json: @discount
+      res['status'] = 200
+      res['data'] = @discount
     else
-      render json: @discount.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['errors'] = @discount.errors
+
     end
+    render json: res
   end
 
   # DELETE /discounts/1
   def destroy
-    @discount.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @discount.destroy
+    render json: res
   end
 
   private

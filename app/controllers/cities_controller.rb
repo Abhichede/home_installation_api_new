@@ -3,39 +3,55 @@ class CitiesController < ApplicationController
 
   # GET /cities
   def index
+    res = {}
     @cities = City.all
-
-    render json: @cities
+    res['status'] = 200
+    res['data'] = @cities
+    render json: res
   end
 
   # GET /cities/1
   def show
-    render json: @city
+    res = {}
+    res['status'] = 200
+    res['data'] = @city
+    render json: res
   end
 
   # POST /cities
   def create
+    res = {}
     @city = City.new(city_params)
 
     if @city.save
-      render json: @city, status: :created, location: @city
+      res['status'] = 200
+    res['data'] = @city
     else
-      render json: @city.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @city.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /cities/1
   def update
+    res = {}
     if @city.update(city_params)
-      render json: @city
+      res['status'] = 200
+    res['data'] = @city
     else
-      render json: @city.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @city.errors
     end
+    render json: res
   end
 
   # DELETE /cities/1
   def destroy
-    @city.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @city.destroy
+    render json: res
   end
 
   private

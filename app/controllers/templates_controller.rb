@@ -3,39 +3,57 @@ class TemplatesController < ApplicationController
 
   # GET /templates
   def index
+    res = {}
     @templates = Template.all
-
-    render json: @templates
+    res['status'] = 200
+    res['data'] = @templates
+    render json: res
   end
 
   # GET /templates/1
   def show
-    render json: @template
+    res = {}
+    res['status'] = 200
+    res['data'] = @template
+    render json: res
   end
 
   # POST /templates
   def create
+    res = {}
     @template = Template.new(template_params)
 
     if @template.save
-      render json: @template, status: :created, location: @template
+      res['status'] = 200
+      res['data'] = @template
+
     else
-      render json: @template.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @template.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /templates/1
   def update
+    res = {}
     if @template.update(template_params)
-      render json: @template
+      res['status'] = 200
+      res['data'] = @template
+
     else
-      render json: @template.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @template.errors
     end
+    render json: res
   end
 
   # DELETE /templates/1
   def destroy
-    @template.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @template.destroy
+    render json: res
   end
 
   private

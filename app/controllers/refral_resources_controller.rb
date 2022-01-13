@@ -3,43 +3,55 @@ class RefralResourcesController < ApplicationController
 
   # GET /refral_resources
   def index
-    @refral_resources = RefralResource.all
-
-    render json: @refral_resources
+      res = {}
+      @refral_resources = RefralResource.all
+      res['data'] = @refral_resources
+    render json: res
   end
 
   # GET /refral_resources/1
   def show
-    user_id = params['user_id']
-    res = {}
-    res['status'] = true
-    res['data'] = RefralResource.where("user_id=#{user_id}")
+      user_id = params['user_id']
+      res = {}
+      res['status'] = 200
+      res['data'] = RefralResource.where("user_id=#{user_id}")
     render json: res
   end
 
   # POST /refral_resources
   def create
+    res = {}
     @refral_resource = RefralResource.new(refral_resource_params)
 
     if @refral_resource.save
-      render json: @refral_resource, status: :created, location: @refral_resource
+      res['status'] = 200
+      res['data'] = @refral_resource
     else
-      render json: @refral_resource.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['data'] = @refral_resource.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /refral_resources/1
   def update
+    res = {}
     if @refral_resource.update(refral_resource_params)
-      render json: @refral_resource
+      res['status'] = 200
+      res['data'] = @refral_resource
     else
-      render json: @refral_resource.errors, status: :unprocessable_entity
+      res['status'] = 200
+      res['data'] = @refral_resource.errors
     end
+    render json: res
   end
 
   # DELETE /refral_resources/1
   def destroy
-    @refral_resource.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @refral_resource.destroy
+    render json: res
   end
 
   private

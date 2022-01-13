@@ -3,16 +3,18 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations
   def index
+    res = {}
     @organizations = Organization.all
-
-    render json: @organizations
+    res['status'] = 200
+    res['data'] = @organizations
+    render json: res
   end
 
   # GET /organizations/1
   def show
     user_id = params['user_id']
     res = {}
-    res['status'] = true
+    res['status'] = 200
     res['data'] = Organization.where("user_id=#{user_id}")
     render json: res
   end
@@ -21,26 +23,41 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   def create
     @organization = Organization.new(organization_params)
-
+    res = {}
     if @organization.save
-      render json: @organization, status: :created, location: @organization
+
+      res['status'] = 200
+      res['data'] = @organization
+
     else
-      render json: @organization.errors, status: :unprocessable_entity
+      res['status'] = 200
+      res['errors'] = @organization.errors
+
     end
+    render json: res
   end
 
   # PATCH/PUT /organizations/1
   def update
+    res = {}
     if @organization.update(organization_params)
-      render json: @organization
+      res['status'] = 200
+      res['data'] = @organization
     else
-      render json: @organization.errors, status: :unprocessable_entity
+      res['status'] = 200
+      res['errors'] = @organization.errors
+
+
     end
+    render json: res
   end
 
   # DELETE /organizations/1
   def destroy
-    @organization.destroy
+     res = {}
+    res['status'] = 200
+    res['data'] = @organization.destroy
+    render json: res
   end
 
   private

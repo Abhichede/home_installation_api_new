@@ -3,13 +3,16 @@ class StaffMembersController < ApplicationController
 
   # GET /staff_members
   def index
+    res = {}
     @staff_members = StaffMember.all
-
-    render json: @staff_members
+    res['status'] = 200
+    res['data'] = @staff_members
+    render json: res
   end
 
   # GET /staff_members/1
    def show
+
     user_id = params['user_id']
     res = {}
     res['status'] = true
@@ -19,27 +22,38 @@ class StaffMembersController < ApplicationController
 
   # POST /staff_members
   def create
+    res = {}
     @staff_member = StaffMember.new(staff_member_params)
-
     if @staff_member.save
-      render json: @staff_member, status: :created, location: @staff_member
+      res['status'] = 200
+      res['data'] = @staff_member
     else
-      render json: @staff_member.errors, status: :unprocessable_entity
+      res['status'] = 200
+      res['errors'] = @staff_member.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /staff_members/1
   def update
+    res = {}
     if @staff_member.update(staff_member_params)
-      render json: @staff_member
+      res['status'] = 200
+      res['data'] = @staff_member
     else
-      render json: @staff_member.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['data'] = @staff_member.errors
+
     end
+    render json: res
   end
 
   # DELETE /staff_members/1
   def destroy
-    @staff_member.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @staff_member.destroy
+    render json: res
   end
 
   private

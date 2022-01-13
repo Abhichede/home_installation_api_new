@@ -3,39 +3,56 @@ class AutomationDescriptionsController < ApplicationController
 
   # GET /automation_descriptions
   def index
+    res = {}
     @automation_descriptions = AutomationDescription.all
-
-    render json: @automation_descriptions
+    res['status'] = 200
+    res['data'] = @automation_descriptions
+    render json: res
   end
 
   # GET /automation_descriptions/1
   def show
-    render json: @automation_description
+    res = {}
+    res['status'] = 200
+    res['data'] = @automation_description
+    render json: res
   end
 
   # POST /automation_descriptions
   def create
+    res = {}
     @automation_description = AutomationDescription.new(automation_description_params)
 
     if @automation_description.save
-      render json: @automation_description, status: :created, location: @automation_description
+      res['status'] = 200
+      res['data'] = @automation_description
+
     else
-      render json: @automation_description.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @automation_description.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /automation_descriptions/1
   def update
+    res = {}
     if @automation_description.update(automation_description_params)
-      render json: @automation_description
+     res['status'] = 200
+    res['data'] = @automation_description
     else
-      render json: @automation_description.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @automation_description.errors
     end
+    render json: res
   end
 
   # DELETE /automation_descriptions/1
   def destroy
-    @automation_description.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @automation_description.errors
+    render json: res
   end
 
   private

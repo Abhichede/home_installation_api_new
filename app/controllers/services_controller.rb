@@ -3,43 +3,58 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
+    res = {}
     @services = Service.all
-
-    render json: @services
+    res['status'] = 200
+    res['data'] = @services
+    render json: res
   end
 
   # GET /services/1
   def show
+    res = {}
     user_id = params['user_id']
     res = {}
-    res['status'] = true
+    res['status'] = 200
     res['data'] = Service.where("user_id=#{user_id}")
     render json: res
   end
 
   # POST /services
   def create
+    res = {}
     @service = Service.new(service_params)
 
     if @service.save
-      render json: @service, status: :created, location: @service
+      res['status'] = 200
+      res['data'] = @service
+
     else
-      render json: @service.errors, status: :unprocessable_entity
+      res['status'] = 201
+    res['data'] = @service.errors
     end
+    render json: res
   end
 
   # PATCH/PUT /services/1
   def update
+    res = {}
     if @service.update(service_params)
-      render json: @service
+      res['status'] = 200
+      res['data'] = @service
     else
-      render json: @service.errors, status: :unprocessable_entity
+      res['status'] = 201
+      res['data'] = @service.errors
     end
+    render json: res
   end
 
   # DELETE /services/1
   def destroy
-    @service.destroy
+    res = {}
+    res['status'] = 200
+    res['data'] = @service.destroy
+    render json: res
   end
 
   private
