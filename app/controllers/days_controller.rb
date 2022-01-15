@@ -5,12 +5,18 @@ class DaysController < ApplicationController
   def index
     @days = Day.all
 
-    render json: @days
+    render json: {
+        status: 200,
+        data: @days
+      }
   end
 
   # GET /days/1
   def show
-    render json: @day
+    render json: {
+        status: 200,
+        data: @day
+      }
   end
 
   # POST /days
@@ -18,7 +24,10 @@ class DaysController < ApplicationController
     @day = Day.new(day_params)
 
     if @day.save
-      render json: @day, status: :created, location: @day
+      render json: {
+        status: 200,
+        data: @day
+      }, status: :created, location: @day
     else
       render json: @day.errors, status: :unprocessable_entity
     end

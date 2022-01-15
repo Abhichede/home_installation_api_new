@@ -3,10 +3,10 @@ class RefralResourcesController < ApplicationController
 
   # GET /refral_resources
   def index
-      res = {}
-      @refral_resources = RefralResource.all
-      res['data'] = @refral_resources
-    render json: res
+    render json: {
+      status: 200,
+      data: RefralResource.all
+    }
   end
 
   # GET /refral_resources/1
