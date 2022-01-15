@@ -4,7 +4,7 @@ class CountriesController < ApplicationController
   # GET /countries
   def index
     res = {}
-    @countries = Country.all
+    @countries = Country.all.order(:country_name)
     res['status'] = 200
     res['data'] = @countries
      render json: res
