@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: {
         status: 200,
+        message: "User created successfully!"
         data: {
           id: @user.id,
           created_at: @user.created_at
