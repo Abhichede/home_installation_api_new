@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: punchh12
+  password: password
   host: 127.0.0.1
   variables:
     sql_mode: TRADITIONAL # https://github.com/rails/rails/issues/25924

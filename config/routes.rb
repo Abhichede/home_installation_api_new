@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :realtors
+  resources :reports
   resources :discounts
   resources :organizations
   resources :staff_members
