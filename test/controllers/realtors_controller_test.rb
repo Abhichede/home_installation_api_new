@@ -12,7 +12,7 @@ class RealtorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create realtor" do
     assert_difference('Realtor.count') do
-      post realtors_url, params: { realtor: { city: @realtor.city, company_name: @realtor.company_name, country: @realtor.country, email: @realtor.email, mobile_number: @realtor.mobile_number, name: @realtor.name, type: @realtor.type } }, as: :json
+      post realtors_url, params: { realtor: { agent_type: @realtor.agent_type, city: @realtor.city, company_name: @realtor.company_name, country: @realtor.country, email: @realtor.email, mobile_number: @realtor.mobile_number, name: @realtor.name } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class RealtorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update realtor" do
-    patch realtor_url(@realtor), params: { realtor: { city: @realtor.city, company_name: @realtor.company_name, country: @realtor.country, email: @realtor.email, mobile_number: @realtor.mobile_number, name: @realtor.name, type: @realtor.type } }, as: :json
+    patch realtor_url(@realtor), params: { realtor: { agent_type: @realtor.agent_type, city: @realtor.city, company_name: @realtor.company_name, country: @realtor.country, email: @realtor.email, mobile_number: @realtor.mobile_number, name: @realtor.name } }, as: :json
     assert_response 200
   end
 

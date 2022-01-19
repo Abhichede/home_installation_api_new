@@ -5,12 +5,12 @@ class RealtorsController < ApplicationController
   def index
     @realtors = Realtor.all
 
-    render json: @realtors
+    render json: {status: 200, data: @realtors}
   end
 
   # GET /realtors/1
   def show
-    render json: @realtor
+    render json: {status: 200, data: @realtor}
   end
 
   # POST /realtors
@@ -18,7 +18,7 @@ class RealtorsController < ApplicationController
     @realtor = Realtor.new(realtor_params)
 
     if @realtor.save
-      render json: @realtor, status: :created, location: @realtor
+      render json: {status: 200, data: @realtor}, status: :ok, location: @realtor
     else
       render json: @realtor.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class RealtorsController < ApplicationController
   # PATCH/PUT /realtors/1
   def update
     if @realtor.update(realtor_params)
-      render json: @realtor
+      render json: {status: 200, data: @realtor}
     else
       render json: @realtor.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class RealtorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def realtor_params
-      params.require(:realtor).permit(:name, :type, :mobile_number, :email, :company_name, :city, :country)
+      params.require(:realtor).permit(:name, :agent_type, :mobile_number, :email, :company_name, :city, :country)
     end
 end

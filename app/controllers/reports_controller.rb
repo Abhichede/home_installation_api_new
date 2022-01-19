@@ -5,12 +5,12 @@ class ReportsController < ApplicationController
   def index
     @reports = Report.all
 
-    render json: @reports
+    render json: {status: 200, data: @reports}
   end
 
   # GET /reports/1
   def show
-    render json: @report
+    render json: {status: 200, data: @report}
   end
 
   # POST /reports
@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
-      render json: @report, status: :created, location: @report
+      render json: {status: 200, data: @report}, status: :created, location: @report
     else
       render json: @report.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class ReportsController < ApplicationController
   # PATCH/PUT /reports/1
   def update
     if @report.update(report_params)
-      render json: @report
+      render json: {status: 200, data: @report}
     else
       render json: @report.errors, status: :unprocessable_entity
     end
@@ -36,6 +36,7 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   def destroy
     @report.destroy
+    render json: {message: "Deleted successfully"}
   end
 
   private
