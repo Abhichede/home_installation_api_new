@@ -1,0 +1,48 @@
+class AddColumnsInReports < ActiveRecord::Migration[5.2]
+  def change
+    rename_column :reports, :name, :report_name
+    add_column :reports, :cover_picture_one, :string
+    add_column :reports, :cover_picture_two, :string
+    add_column :reports, :property_street_address, :string
+    add_column :reports, :property_country, :string
+    add_column :reports, :property_state, :string
+    add_column :reports, :property_city, :string
+    add_column :reports, :client_name, :string
+    add_column :reports, :client_street_address, :string
+    add_column :reports, :client_country, :string
+    add_column :reports, :client_state, :string
+    add_column :reports, :client_city, :string
+    add_column :reports, :client_phone, :string
+    add_column :reports, :client_email, :string
+    add_column :reports, :client_fax, :string
+    add_column :reports, :client_note, :string
+    add_column :reports, :buyer, :string
+    add_column :reports, :seller, :string
+    add_column :reports, :buyer_agent, :string
+    add_column :reports, :seller_agent, :string
+    add_column :reports, :owner, :string
+    add_column :reports, :other_present, :string
+    rename_column :reports, :date, :inspection_date
+    rename_column :reports, :time, :inspection_start_time
+    add_column :reports, :inspection_end_time, :string
+    add_column :reports, :invoice_number, :string
+    add_column :reports, :fees_charged, :string
+    add_column :reports, :taxes, :string
+    add_column :reports, :other_charges, :string
+    add_column :reports, :total_fee, :string
+    add_column :reports, :date_paid, :string
+    add_column :reports, :climate, :string
+    add_column :reports, :temperature, :string
+    add_column :reports, :humidity, :string
+    add_column :reports, :furnished, :string
+    add_column :reports, :number_of_stories, :string
+    add_column :reports, :style, :string
+    add_column :reports, :structure_orientations, :string
+    add_column :reports, :type_of_construction, :string
+    add_column :reports, :year_built, :string
+    add_column :reports, :sq_ft, :string
+    add_column :reports, :travel_distance_start, :string
+    add_column :reports, :travel_distance_end, :string
+    add_column :reports, :total_travel, :string
+  end
+end

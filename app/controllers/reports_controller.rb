@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
-      render json: {status: 200, data: @report}, status: :created, location: @report
+      render json: {status: 200, data: {id: @report.id, message: "Created successfully!"}}, status: :created, location: @report
     else
       render json: @report.errors, status: :unprocessable_entity
     end
@@ -47,6 +47,51 @@ class ReportsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def report_params
-      params.require(:report).permit(:name, :date, :time)
+      params.require(:report).permit(
+        :report_name,
+        :cover_picture_one,
+        :cover_picture_two,
+        :property_street_address,
+        :property_country,
+        :property_state,
+        :property_city,
+        :client_name,
+        :client_street_address,
+        :client_country,
+        :client_state,
+        :client_city,
+        :client_phone,
+        :client_email,
+        :client_fax,
+        :client_note,
+        :buyer,
+        :seller,
+        :buyer_agent,
+        :seller_agent,
+        :owner,
+        :other_present,
+        :inspection_date,
+        :inspection_start_time,
+        :inspection_end_time,
+        :invoice_number,
+        :fees_charged,
+        :taxes,
+        :other_charges,
+        :total_fee,
+        :date_paid,
+        :climate,
+        :temperature,
+        :humidity,
+        :furnished,
+        :number_of_stories,
+        :style,
+        :structure_orientations,
+        :type_of_construction,
+        :year_built,
+        :sq_ft,
+        :travel_distance_start,
+        :travel_distance_end,
+        :total_travel,
+      )
     end
 end

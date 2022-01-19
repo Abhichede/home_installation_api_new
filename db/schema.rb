@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_035319) do
+ActiveRecord::Schema.define(version: 2022_01_19_201822) do
 
   create_table "agreements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "agreement_name"
@@ -129,11 +129,52 @@ ActiveRecord::Schema.define(version: 2022_01_19_035319) do
   end
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name"
-    t.string "date"
-    t.string "time"
+    t.text "report_name"
+    t.string "inspection_date"
+    t.string "inspection_start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover_picture_one"
+    t.string "cover_picture_two"
+    t.string "property_street_address"
+    t.string "property_country"
+    t.string "property_state"
+    t.string "property_city"
+    t.string "client_name"
+    t.string "client_street_address"
+    t.string "client_country"
+    t.string "client_state"
+    t.string "client_city"
+    t.string "client_phone"
+    t.string "client_email"
+    t.string "client_fax"
+    t.string "client_note"
+    t.string "buyer"
+    t.string "seller"
+    t.string "buyer_agent"
+    t.string "seller_agent"
+    t.string "owner"
+    t.string "other_present"
+    t.string "inspection_end_time"
+    t.string "invoice_number"
+    t.string "fees_charged"
+    t.string "taxes"
+    t.string "other_charges"
+    t.string "total_fee"
+    t.string "date_paid"
+    t.string "climate"
+    t.string "temperature"
+    t.string "humidity"
+    t.string "furnished"
+    t.string "number_of_stories"
+    t.string "style"
+    t.string "structure_orientations"
+    t.string "type_of_construction"
+    t.string "year_built"
+    t.string "sq_ft"
+    t.string "travel_distance_start"
+    t.string "travel_distance_end"
+    t.string "total_travel"
   end
 
   create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
