@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   def login
     email = params['email']
     password = params['password']
-    check_login = User.where("email='#{email}' and password='#{password}'")
+    check_login = User.where("email='#{email}' and password='#{password}'").first
     res = {}
-    if check_login[0].present?
+    if check_login.present?
       res['message'] = "Login Successfully"
       res['status'] = true
       res['data'] = check_login

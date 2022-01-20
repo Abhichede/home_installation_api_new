@@ -92,6 +92,7 @@ class ReportsController < ApplicationController
         :travel_distance_start,
         :travel_distance_end,
         :total_travel,
+        :user_id
       )
     end
 end

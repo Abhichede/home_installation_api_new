@@ -46,6 +46,6 @@ class RealtorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def realtor_params
-      params.require(:realtor).permit(:name, :agent_type, :mobile_number, :email, :company_name, :city, :country)
+      params.require(:realtor).permit(:name, :agent_type, :mobile_number, :email, :company_name, :city, :country, :user_id)
     end
 end

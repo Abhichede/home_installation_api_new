@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_201822) do
+ActiveRecord::Schema.define(version: 2022_01_20_175242) do
 
   create_table "agreements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "agreement_name"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_201822) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "refral_resources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -175,6 +176,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_201822) do
     t.string "travel_distance_start"
     t.string "travel_distance_end"
     t.string "total_travel"
+    t.integer "user_id"
   end
 
   create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
