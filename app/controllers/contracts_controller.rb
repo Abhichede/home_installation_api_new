@@ -3,7 +3,11 @@ class ContractsController < ApplicationController
 
   # GET /contracts
   def index
-    @contracts = Contract.all
+    if params[:user_id].present?
+      @contracts = Contract.all.where(user_id: params[:user_id])
+    else
+      @contracts = Contract.all
+    end
 
     render json: {status: 200, data: @contracts}
   end
@@ -46,6 +50,6 @@ class ContractsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contract_params
-      params.require(:contract).permit(:contract, :signature, :user_id)
+      params.require(:contract).permit(:contract_summary, :signature, :user_id)
     end
 end
