@@ -9,7 +9,7 @@ class CreateAgentContacts < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :city
       t.string :state
-      t.string :country_string
+      t.string :country
       t.integer :user_id
 
       t.timestamps

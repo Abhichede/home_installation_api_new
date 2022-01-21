@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_181415) do
+ActiveRecord::Schema.define(version: 2022_01_21_133553) do
+
+  create_table "agent_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "agency"
+    t.string "client_agent"
+    t.string "seller_agent"
+    t.string "phone"
+    t.string "email"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "agreements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "agreement_name"
