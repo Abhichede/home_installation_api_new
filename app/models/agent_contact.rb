@@ -1,0 +1,2 @@
+class AgentContact < ApplicationRecord
+end

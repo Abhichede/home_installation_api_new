@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  agency: MyString
+  client_agent: MyString
+  seller_agent: MyString
+  phone: MyString
+  email: MyString
+  city: MyString
+  state: MyString
+  country_string: MyString
+  user_id: 1
+
+two:
+  name: MyString
+  agency: MyString
+  client_agent: MyString
+  seller_agent: MyString
+  phone: MyString
+  email: MyString
+  city: MyString
+  state: MyString
+  country_string: MyString
+  user_id: 1

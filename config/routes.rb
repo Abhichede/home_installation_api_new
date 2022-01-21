@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :agent_contacts
   resources :contracts
   resources :realtors
   resources :reports
