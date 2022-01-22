@@ -46,6 +46,6 @@ class AgentContactsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def agent_contact_params
-      params.require(:agent_contact).permit(:name, :agency, :client_agent, :seller_agent, :phone, :email, :city, :state, :country, :user_id)
+      params.require(:agent_contact).permit(:first_name, :agency_name, :client_agent, :seller_agent, :phone, :email, :city, :state, :country, :user_id, :last_name, :second_email, :second_phone, :date_of_birth, :agency_phone, :image)
     end
 end
