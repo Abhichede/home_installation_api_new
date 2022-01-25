@@ -36,6 +36,7 @@ class ClientContactsController < ApplicationController
   # DELETE /client_contacts/1
   def destroy
     @client_contact.destroy
+    render json: {message: "Deleted successfully"}, status: :ok
   end
 
   private

@@ -40,6 +40,7 @@ class ContractsController < ApplicationController
   # DELETE /contracts/1
   def destroy
     @contract.destroy
+    render json: {message: "Deleted successfully"}, status: :ok
   end
 
   private

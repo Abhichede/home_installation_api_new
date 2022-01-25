@@ -36,6 +36,7 @@ class AgencyContactsController < ApplicationController
   # DELETE /agency_contacts/1
   def destroy
     @agency_contact.destroy
+    render json: {message: "Deleted successfully"}, status: :ok
   end
 
   private

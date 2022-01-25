@@ -36,6 +36,7 @@ class RealtorsController < ApplicationController
   # DELETE /realtors/1
   def destroy
     @realtor.destroy
+    render json: {message: "Deleted successfully"}, status: :ok
   end
 
   private
